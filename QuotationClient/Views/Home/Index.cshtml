@@ -1,0 +1,75 @@
+﻿@using QuotationClient.Models;
+@model QuotationClient.Models.clsQuotationVM
+@{
+    ViewBag.Title = "Quotation Generation";
+}
+
+
+@using (var form = Html.BeginForm(FormMethod.Post))
+{
+    <div class="jumbotron">
+        <h1>Quotation Generation</h1>
+        <p class="lead text-primary">
+            @if (ViewBag.Error != null)
+            {
+                @ViewBag.Error
+            }
+            @if (ViewBag.Msg != null)
+            {
+                @ViewBag.Msg
+            }
+        </p>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            @Html.LabelFor(p => p.SourceAddress, new { @class = "text-label" })
+            @Html.TextBoxFor(p => p.SourceAddress, new { @class = "form-control", @id = "txtSourceAddress", @required = "required" })
+        </div>
+        <div class="col-md-12">
+            @Html.LabelFor(p => p.DestinationAddress, new { @class = "text-label" })
+            @Html.TextBoxFor(p => p.DestinationAddress, new { @class = "form-control", @id = "txtDestinationAddress", @required = "required" })
+        </div>
+
+        <div class="col-md-12">
+            @Html.LabelFor(p => p.listDimension.Height, new { @class = "text-label" })
+            @Html.TextBoxFor(p => p.listDimension.Height, new { @class = "form-control", @id = "txtHeight", @type = "number", @required = "required" })
+        </div>
+        <div class="col-md-12">
+            @Html.LabelFor(p => p.listDimension.Width, new { @class = "text-label" })
+            @Html.TextBoxFor(p => p.listDimension.Width, new { @class = "form-control", @id = "txtWidth", @type = "number", @required = "required" })
+        </div>
+        <div class="col-md-12">
+            @Html.LabelFor(p => p.listDimension.Length, new { @class = "text-label" })
+            @Html.TextBoxFor(p => p.listDimension.Length, new { @class = "form-control", @id = "txtLength", @type = "number", @required = "required" })
+        </div>
+
+        <div class="col-md-12">
+            <hr />
+            <button type="submit" name="btnSubmit" class="btn btn-primary">Submit</button>
+        </div>
+        <div class="col-md-12">
+            @if (Model.output != null)
+                {
+                <h3>Result</h3>
+                <table border="1" class="table table-bordered" >
+                    <tr>
+                        <th>Provider</th>
+                        <th>Total</th>
+                    </tr>
+                    @foreach (var s in Model.output)
+                    {
+                        <tr>
+                            <td>
+                                @s.Provider
+                            </td>
+                            <td>
+                                @s.total.ToString()
+                            </td>
+                        </tr>
+                    }
+                </table>
+            }
+        </div>
+    </div>
+}
