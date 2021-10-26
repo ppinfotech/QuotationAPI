@@ -42,7 +42,7 @@ C:\PPInfotech\Project\QuotationAPI\QuotationAPI\QuotationAPI\bin\Microsoft.AI.De
 C:\PPInfotech\Project\QuotationAPI\QuotationAPI\QuotationAPI\bin\Microsoft.AI.ServerTelemetryChannel.xml
 C:\PPInfotech\Project\QuotationAPI\QuotationAPI\QuotationAPI\bin\Microsoft.AI.WindowsServer.xml
 C:\PPInfotech\Project\QuotationAPI\QuotationAPI\QuotationAPI\bin\Microsoft.AI.Web.xml
-C:\PPInfotech\Project\QuotationAPI\QuotationAPI\QuotationAPI\obj\Debug\QuotationAPI.csprojResolveAssemblyReference.cache
 C:\PPInfotech\Project\QuotationAPI\QuotationAPI\QuotationAPI\obj\Debug\QuotationAPI.csproj.CoreCompileInputs.cache
 C:\PPInfotech\Project\QuotationAPI\QuotationAPI\QuotationAPI\obj\Debug\QuotationAPI.dll
 C:\PPInfotech\Project\QuotationAPI\QuotationAPI\QuotationAPI\obj\Debug\QuotationAPI.pdb
+C:\PPInfotech\Project\QuotationAPI\QuotationAPI\QuotationAPI\obj\Debug\QuotationAPI.csprojResolveAssemblyReference.cache

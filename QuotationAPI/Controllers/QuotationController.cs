@@ -1,51 +1,123 @@
-﻿using System.Web.Http;
-using QuotationAPI.Models;
-using System.Xml.Serialization;
-using System.IO;
+﻿using QuotationAPI.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Threading.Tasks;
+using System.Web.Http;
 
 namespace QuotationAPI.Controllers
 {
     public class QuotationController : ApiController
-    {
+    { 
         //API1
         [HttpPost]
-        public double APIDimension1(clsQuotation1 objQuotation1)
+        public async Task<Response> APIDimension1(InputDataModel requestModel)
         {
-            //multiplier added as spCharges to differenciate the result
-            double spCharges = 1.2;
-            double total = spCharges * objQuotation1.dimensions.Height * objQuotation1.dimensions.Width * objQuotation1.dimensions.Length;
-            return total;
-        }
-
-        [HttpPost]
-        public double APIDimension2(clsQuotation2 objQuotation2)
-        {
-            //multiplier added as spCharges to differenciate the result
-            double spCharges = 1.1;
-            double amount = spCharges * objQuotation2.cartons.Height * objQuotation2.cartons.Width * objQuotation2.cartons.Length;
-            return amount;
-        }
-
-        public double APIDimension3([FromBody] string xml)
-        {
-            //declaring xml root element
-            XmlRootAttribute xRoot = new XmlRootAttribute();
-            xRoot.ElementName = "xml";
-            // xRoot.Namespace = "http://www.cpandl.com";
-            xRoot.IsNullable = true;
-
-            var serializer = new XmlSerializer(typeof(clsQuotation3), xRoot);
-            clsQuotation3 objQuotation3 = new clsQuotation3();
-
-            //deserialization to object from xml
-            using (TextReader reader = new StringReader(xml))
+            try
             {
-                objQuotation3 = (clsQuotation3)serializer.Deserialize(reader);
+                //multiplier added as spCharges to differenciate the result                
+                double spCharges = 1.2;
+                double total = 0;
+                for (int i = 0; i < requestModel.Dimensions.Length; i++)
+                {
+                    total +=
+                        requestModel.Dimensions[i].Height *
+                        requestModel.Dimensions[i].Length *
+                        requestModel.Dimensions[i].Width *
+                        spCharges;
+                }
+                var response = new Response();
+                response.Amount = (decimal)total;
+                response.ProviderName = "SP1";
+                response.Success = true;
+                return await Task.FromResult(response);
+
             }
-            //multiplier added as spCharges to differenciate the result
-            double spCharges = 1.25;
-            double quote = spCharges * objQuotation3.Packages.Height * objQuotation3.Packages.Width * objQuotation3.Packages.Length;
-            return quote;
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
+
+        //API2
+        [HttpPost]
+        public async Task<Response> APIDimension2(InputDataModel requestModel)
+        {
+            try
+            {
+                //multiplier added as spCharges to differenciate the result                
+                double spCharges = 1.5;
+                double total = 0;
+                for (int i = 0; i < requestModel.Dimensions.Length; i++)
+                {
+                    total +=
+                        requestModel.Dimensions[i].Height *
+                        requestModel.Dimensions[i].Length *
+                        requestModel.Dimensions[i].Width *
+                        spCharges;
+                }
+                var response = new Response();
+                response.Amount = (decimal)total;
+                response.ProviderName = "SP2";
+                response.Success = true;
+                return await Task.FromResult(response);
+
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+        //API1
+        [HttpPost]
+        public async Task<Response> APIDimension3(InputDataModel requestModel)
+        {
+            try
+            {
+                //multiplier added as spCharges to differenciate the result                
+                double spCharges = 1.8;
+                double total = 0;
+                for (int i = 0; i < requestModel.Dimensions.Length; i++)
+                {
+                    total +=
+                        requestModel.Dimensions[i].Height *
+                        requestModel.Dimensions[i].Length *
+                        requestModel.Dimensions[i].Width *
+                        spCharges;
+                }
+                var response = new Response();
+                response.Amount = (decimal)total;
+                response.ProviderName = "SP3";
+                response.Success = true;
+                return await Task.FromResult(response);
+
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+        //public double APIDimension3([FromBody] string xml)
+        //{
+        //    //declaring xml root element
+        //    XmlRootAttribute xRoot = new XmlRootAttribute();
+        //    xRoot.ElementName = "xml";        
+        //    xRoot.IsNullable = true;
+
+        //    var serializer = new XmlSerializer(typeof(clsQuotation3), xRoot);
+        //    clsQuotation3 objQuotation3 = new clsQuotation3();
+
+        //    //deserialization to object from xml
+        //    using (TextReader reader = new StringReader(xml))
+        //    {
+        //        objQuotation3 = (clsQuotation3)serializer.Deserialize(reader);
+        //    }
+        //    //multiplier added as spCharges to differenciate the result
+        //    double spCharges = 1.25;
+        //    double quote = spCharges * objQuotation3.Packages.Height * objQuotation3.Packages.Width * objQuotation3.Packages.Length;
+        //    return quote;
+        //}
     }
 }

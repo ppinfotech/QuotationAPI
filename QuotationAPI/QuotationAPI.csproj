@@ -178,13 +178,26 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\QuotationController.cs" />
+    <Compile Include="Models\Quotation.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\clsQuotation3.cs" />
-    <Compile Include="Models\clsQuotation2.cs" />
-    <Compile Include="Models\clsQuotation1.cs" />
+    <Compile Include="Interfaces\IGetBestPrice.cs" />
+    <Compile Include="Interfaces\IInputData.cs" />
+    <Compile Include="Interfaces\ISPData.cs" />
+    <Compile Include="Interfaces\IApiDetails.cs" />
+    <Compile Include="Models\Address.cs" />
+    <Compile Include="Models\ApiAuthentication.cs" />
+    <Compile Include="Models\Dimension.cs" />
+    <Compile Include="Models\ResponseTypes.cs" />
+    <Compile Include="Models\Response.cs" />
+    <Compile Include="Models\ApiDetails.cs" />
+    <Compile Include="Models\InputDataModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ClassFiles\HttpHandlerBase.cs" />
+    <Compile Include="ClassFiles\SP1Handler.cs" />
+    <Compile Include="ClassFiles\SP3Handler.cs" />
+    <Compile Include="ClassFiles\SP2Handler.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
